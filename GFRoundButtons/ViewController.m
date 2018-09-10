@@ -18,23 +18,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     NSMutableArray<UIButton *> *array = [NSMutableArray array];
+    NSArray<NSString *> *btnImgName = @[@"littleCharts",@"vote",@"charts",@"topic",@"mine",];
     for (int i = 0; i < 4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor whiteColor];
-        btn.frame = CGRectMake(0, 0, 10, 10);
+        btn.tag = i;
+        btn.frame = CGRectMake(0, 0, 34, 34);
+        [btn setImage:[UIImage imageNamed:btnImgName[i]] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [array addObject:btn];
     }
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor whiteColor];
-    btn.frame = CGRectMake(0, 0, 20, 20);
-    GFRoundBtnsView *roundBtns = [[GFRoundBtnsView alloc] initWithCenterButton:btn aroundButtons:array frame:CGRectMake(100, 100, 200, 200)];
+    btn.frame = CGRectMake(0, 0, 79, 79);
+    [btn setImage:[UIImage imageNamed:@"voteArea"] forState:UIControlStateNormal];
+    GFRoundBtnsView *roundBtns = [[GFRoundBtnsView alloc] initWithCenterButton:btn aroundButtons:array frame:CGRectMake(100, 100, 200, 400)];
     [self.view addSubview:roundBtns];
-    
-    roundBtns.backgroundColor = [UIColor blackColor];
-    
-    
+    roundBtns.backgroundColor = [UIColor lightGrayColor];
 }
-
+- (void)btnClick:(UIButton *)sender{
+    NSLog(@" === %ld",(long)sender.tag);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

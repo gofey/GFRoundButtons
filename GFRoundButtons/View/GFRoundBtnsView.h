@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GFRoundBtnsView : UIView
+
 - (instancetype)initWithCenterButton:(UIButton *)centerBtn aroundButtons:(NSArray<UIButton *> *)buttons frame:(CGRect)frame;
+
 @end
